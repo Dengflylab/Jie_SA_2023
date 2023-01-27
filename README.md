@@ -32,7 +32,24 @@ python script/Figure1_G.py
 Rscript script/Figure1_G.R
 ```
 
+# Figure 2
 
-# Figure 3
+```bash
+#Figure 2A
+Rscript script/Figure2_A.R
+
+
+#Figure 2B
+python script/Figure2_B.py
+
+
+#Figure 2C
+Rscript script/Figure2_C.R
+
+```
+
+# Figure S2A
 
 All scripts and original figures are in directory `Figure3`.
+
+
