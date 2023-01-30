@@ -19,7 +19,11 @@ C_map_fig6_chain <- c('lightskyblue', 'salmon', '#B2DF8A', '#33A02C', '#6A3D9A')
 
 
 TB <- read.table("data/Beha.csv")
+TB$V2 <- str_replace(TB$V2, "data/csv/", "")
+
 colnames(TB) <- c("Group", "Sample", "CH", "FW", "TC")
+TB[c("CH", "FW", "TC")] = TB[c("CH", "FW", "TC")]/100
+
 
 Group <- read.table("data/Group_list2.csv")
 Group <- as.data.frame(str_split_fixed(Group$V1, ",", 3))
@@ -151,7 +155,8 @@ write.csv(Chain_TB,"img/Figure_1D_6F/Fig6_box_ch.csv")
 
 
 
-# 
+
+# Supplemental
 
 List = c("Group8", "Group1", "Group2", "Group4", "Group3", "Group5")
 TB_1 = TB[ TB$Group %in% List,]
@@ -190,5 +195,18 @@ ggplot() +
 	theme(panel.grid = element_blank())
 
 
-ggsave("../Fan_plot/Fig1_box_fw.svg", w=5.89, h = 2.96)
-write.csv(TB_1,"../Fan_plot/Fig1_box_fw.csv")
+
+
+dir.create("img/Figure_S2A")
+ggsave("img/Figure_S2A/Figure_right.png", w=5.89, h = 2.96)
+write.csv(TB_1,"img/Figure_S2A/Fig1_box_fw.csv")
+
+
+
+ggplot() +
+  geom_boxplot(data=TB_1, aes(x=Group, y=CH, fill= Group), width=0.55)+
+	scale_fill_manual(values=C_map_fig1_chain)+ theme_bw()+
+	coord_cartesian(y= c(0, 65))+
+	theme(panel.grid = element_blank())
+
+ggsave("img/Figure_S2A/Figure_left.png", w=5.89, h = 2.96)

@@ -45,11 +45,12 @@ python script/Figure2_B.py
 
 #Figure 2C
 Rscript script/Figure2_C.R
-
 ```
 
 # Figure S2A
 
 All scripts and original figures are in directory `Figure3`.
 
-
+```r
+Rscript script/FigureS2_A.R
+```
