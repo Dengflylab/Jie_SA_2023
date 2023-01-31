@@ -68,8 +68,10 @@ for Video in Video_l:
 
 
 
+# Scripts for video plots. For running jobs below, you need to get corresponded videos for each trajectory files.
 
 
+'''
 
 import cv2
 from matplotlib import colors
@@ -211,3 +213,5 @@ def Video_output(Video, V_loc):
 
 for Video in V_list.keys():
     Video_output(Video, V_list[Video])
+
+'''
