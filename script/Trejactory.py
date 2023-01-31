@@ -92,7 +92,7 @@ def Video_output(Video, V_loc):
     Num = 0
     cap=cv2.VideoCapture(V_loc)
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter("img/trejactory/" + Video + "_30.avi", fourcc, 0.0, (1920,1080))
+    out = cv2.VideoWriter("img/trejactory/" + Video + "_30.avi", fourcc, 30.0, (1920,1080))
 
     List = []
     while Num <= 900:
