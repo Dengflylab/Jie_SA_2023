@@ -5,8 +5,8 @@ dir.create(Dir_out)
 List = c("Ctrl.mp4.csv", "elav-fru-IR.mp4.csv", "Mutant-clone.mp4.csv", "promE-fru-IR-Hnf4-EP-OE.mp4.csv", "promE-fru-IR-Hnf4-HA-OE.mp4.csv", "promE-fru-IR-v330035-fruB-OE.mp4.csv", "promE-fru-Trip.mp4.csv", "promE-fru-v330035.mp4.csv", "promE-Hnf4-IR-BL29375.mp4.csv", "promE-Hnf4-IR-BL64988.mp4.csv")
 
 raw_Dir = "data/csv2"
-Clss_n = c(0, 1, 2, 3, 4, 5)
-Clss_t = c("Fly", "Head", "Gromming", "Chasing", "FW", "TC")
+Clss_n = c(0, 1, 2, 3, 4)
+Clss_t = c("Fly", "Head", "Gromming", "Chasing", "FW")
 F_level = c("Fly", "Chasing", "FW", "TC")
 
 for(i in List){
