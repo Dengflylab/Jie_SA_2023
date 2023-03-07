@@ -37,7 +37,7 @@ ggplot(TB2, aes(X, value, fill = Group))  + geom_boxplot(alpha = .5) +
     geom_point(position = position_dodge(.75) ) +  
     scale_fill_manual(values = c("#377EB8", "#E41A1C", "#B2DF8A", "purple")) +
     coord_cartesian(ylim = c(0,10000)) + 
-    theme(panel.background = element_blank(), panel.border = element_rect(colour = 'black', fill = NA))
+    theme_bw()
 
 ggsave('img/Figure_2B/fead_mix.svg', w = 4, h = 3.35)
 
@@ -73,8 +73,8 @@ TB2$Group <- factor(TB2$Group, levels = unique(TB2$Group))
 ggplot(TB2, aes(X, value, fill = Group))  + geom_boxplot(alpha = .5) +
     geom_point(position = position_dodge(.75) ) +  
     scale_fill_manual(values = c("#377EB8", "#E41A1C", "#B2DF8A", "purple")) +
-    coord_cartesian(ylim = c(0,10000)) + 
-    theme(panel.background = element_blank(), panel.border = element_rect(colour = 'black', fill = NA))
+    coord_cartesian(ylim = c(0,11000)) + 
+    theme_bw()
 
 ggsave('img/Figure_2B/fead_single.svg', w = 4, h = 3.35)
 
