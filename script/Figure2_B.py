@@ -87,6 +87,8 @@ TB2_plot= TB_V2[np.in1d(AA,list(set(BB)))].dropna()
 Box_plot = pd.DataFrame([TB1_plot.Fly.value_counts().to_numpy(), TB2_plot.Fly.value_counts().to_numpy()]).T
 Box_plot.columns = ["Vdeio1", "Video2"]
 Box_plot = Box_plot.melt().dropna()
+# save the result
+Box_plot.to_csv("data/fly2/Two_video_feed.csv")
 
 fix, axs = plt.subplots(figsize=(3,5))
 ax = sns.boxplot(data=Box_plot, x= "variable", y = "value")
