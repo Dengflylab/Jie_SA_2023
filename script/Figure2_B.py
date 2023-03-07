@@ -9,7 +9,6 @@ os.system('mkdir img/Figure_2B')
 Video_1 = "data/fly2/C0401_L.mp4"
 Video_2 = "data/fly2/C0401_R.mp4"
 
-
 # We calculate the first array for the food region
 cap=cv2.VideoCapture("data/fly2/masks/C0401_L_mask.png")
 ret,frame=cap.read()
