@@ -1,3 +1,4 @@
+library(ggplot2)
 TB <- read.csv("img/Figure_2B/Two_video_feed.csv")[-1]
 colnames(TB)[1] <- 'Group'
 
@@ -41,11 +42,12 @@ ggplot(TB2, aes(X, value, fill = Group))  + geom_boxplot(alpha = .5) +
 
 ggsave('img/Figure_2B/fead_mix.svg', w = 4, h = 3.35)
 
-TB_wilcox <- data.frame( Pair = c("Ctl:Sp_vs_Mix", "Exp:Sp_vs_Mix"),
+TB_wilcox <- data.frame( Pair = c("Ctl:Sp_vs_Mix", "Exp:Sp_vs_Mix", "Mix:Ctl_vs_Exp", "Sp:Ctl_vs_Exp"),
             P.value = c(wilcox.test(TB2$value[TB2$Group=='ctl'], TB2$value[TB2$Group == 'Vdeio1'])$p.value,
-                    wilcox.test(TB2$value[TB2$Group=='exp'], TB2$value[TB2$Group == 'Video2'])$p.value)
+                    wilcox.test(TB2$value[TB2$Group=='exp'], TB2$value[TB2$Group == 'Video2'])$p.value,
+                    wilcox.test(TB2$value[TB2$Group=='exp'], TB2$value[TB2$Group == 'ctl'])$p.value,
+                    wilcox.test(TB2$value[TB2$Group=='Video2'], TB2$value[TB2$Group == 'Vdeio1'])$p.value)
 )
-
 
 
 TB_mix <- data.frame(row.names = paste("fly", c(0:7), sep = "_"))
@@ -79,10 +81,11 @@ ggplot(TB2, aes(X, value, fill = Group))  + geom_boxplot(alpha = .5) +
 ggsave('img/Figure_2B/fead_single.svg', w = 4, h = 3.35)
 
 
-TB_wilcox <- rbind(TB_wilcox,  data.frame( Pair = c("Ctl:Sp_vs_Single", "Exp:Sp_vs_Single", "Sp:Ctl_vs_Exp"),
+TB_wilcox <- rbind(TB_wilcox,  data.frame( Pair = c("Ctl:Sp_vs_Single", "Exp:Sp_vs_Single", "Sp:Ctl_vs_Exp", "Sig:up_vs_down"),
     P.value = c(wilcox.test(TB2$value[TB2$Group=='down'], TB2$value[TB2$Group == 'Vdeio1'])$p.value,
         wilcox.test(TB2$value[TB2$Group=='up'], TB2$value[TB2$Group == 'Video2'])$p.value,
-        wilcox.test(TB2$value[TB2$Group=='Vdeio1'], TB2$value[TB2$Group == 'Video2'])$p.value)
+        wilcox.test(TB2$value[TB2$Group=='Vdeio1'], TB2$value[TB2$Group == 'Video2'])$p.value,
+        wilcox.test(TB2$value[TB2$Group=='up'], TB2$value[TB2$Group == 'down'])$p.value)
 ))
 write.table(TB_wilcox, 'img/Figure_2B/wilcox_test.csv', row.names = F, quote = F, sep = '\t')
 ggplot(TB2, aes(x= value)) + geom_density() + facet_wrap(~Group, scales = 'free_y') + theme_bw()
